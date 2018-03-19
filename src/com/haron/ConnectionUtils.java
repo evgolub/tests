@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//import com.haron.*;
+////import com.haron.*;
 
 public class ConnectionUtils {
 
@@ -13,7 +13,7 @@ public class ConnectionUtils {
             ClassNotFoundException {
 
         // Using Oracle
-        //// You may be replaced by other Database.
+        // You may be replaced by other Database.
         return OracleConnUtils.getOracleConnection();
     }
 
