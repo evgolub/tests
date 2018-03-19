@@ -29,7 +29,7 @@ public class ConnectionUtils {
             Statement statement = connection.createStatement();
 
            // String sql = "Select Emp_Id, Emp_No, Emp_Name from Employee";
-            String sql = "{Get_First_Name}";
+            ////|| String sql = "{Get_First_Name}";
             // Execute SQL statement returns a ResultSet object.
             ResultSet rs = statement.executeQuery(sql);
 
