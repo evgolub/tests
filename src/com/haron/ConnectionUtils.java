@@ -28,25 +28,25 @@ public class ConnectionUtils {
             // Create statement
             Statement statement = connection.createStatement();
 
-           // String sql = "Select Emp_Id, Emp_No, Emp_Name from Employee";
-            //// String sql = "{Get_First_Name}";
+            String sql = "SELECT id, name, city_id FROM people";
+
             // Execute SQL statement returns a ResultSet object.
             ResultSet rs = statement.executeQuery(sql);
 
             // Fetch on the ResultSet
             // Move the cursor to the next record.
             while (rs.next()) {
-                int empId = rs.getInt(1);
-                String empNo = rs.getString(2);
-                int empName = rs.getInt(3);
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                int city_id = rs.getInt(3);
                 System.out.println("--------------------");
 
-                System.out.println("EmpId:" + empId);
-                System.out.println("EmpNo:" + empNo);
-                System.out.println("EmpName:" + empName );
+                System.out.println("people_id:" + id);
+                System.out.println("name:" + name);
+                System.out.println("city_id:" + city_id );
 
             }
-
+            rs.close();
             // Close connection.
             connection.close();
         }
