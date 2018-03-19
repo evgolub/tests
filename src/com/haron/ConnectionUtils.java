@@ -22,7 +22,7 @@ public class ConnectionUtils {
         public static void main(String[] args)  throws ClassNotFoundException,
                 SQLException {
 
-            // Get Connection
+            //+ Get Connection
             Connection connection = ConnectionUtils.getMyConnection();
 
             // Create statement
