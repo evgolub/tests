@@ -1,3 +1,4 @@
+/*Разделить надо туловище от спеки*/
 CREATE OR REPLACE PACKAGE test_pkg_3 IS
 
 TYPE CURSOR_REC2 IS RECORD (id int, name varchar2(200), city_id int);
