@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38858e7d-5ab7-4847-9265-7cab85168268" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/plsql/test_pkg_body.sql" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/plsql/test_pkg_spec.sql" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/db_test/com/haron/ConnectionUtils.class" afterPath="$PROJECT_DIR$/out/production/db_test/com/haron/ConnectionUtils.class" />
-      <change beforePath="$PROJECT_DIR$/plsql/test_pkg_1.pck" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/plsql/test_pkg_3.pck" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/haron/ConnectionUtils.java" afterPath="$PROJECT_DIR$/src/com/haron/ConnectionUtils.java" />
+      <change beforePath="$PROJECT_DIR$/plsql/test_pkg_3.pck" afterPath="$PROJECT_DIR$/plsql/test_pkg_3.pck" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
