@@ -26,11 +26,12 @@ public class ConnectionUtils {
             ResultSet rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                String id = rs.getString(1);
-                String name = rs.getString(2);
-                String City_id = rs.getString(3);
-                System.out.println("----------------------------------------");
-                System.out.println("id:" + id + " name:" + name + " city_id:" + City_id);
+                String name = rs.getString(1);
+                String c_name = rs.getString(2);
+                String f_name = rs.getString(3);
+                String v_name = rs.getString(4);
+                System.out.println("-------------------------");
+                System.out.println("Имя: " + name + "\nГород: " + c_name + "\nФрукт: " + f_name + "\nОвощ: " + v_name);
             }
             rs.close();
             // Close connection.
