@@ -29,7 +29,9 @@ public class ConnectionUtils {
 
             Connection connection = ConnectionUtils.getMyConnection();
             Statement statement = connection.createStatement();
-            String sql = "SELECT * from table(test_pkg_3.GET_NAME)";
+
+
+            String sql = "SELECT * from table(test_pkg_3.GET_NAME('СПб'))";
             ResultSet rs = statement.executeQuery(sql);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -44,7 +46,7 @@ public class ConnectionUtils {
                 doc.appendChild(rootElement);
 
                 while (rs.next()) {
-                    rootElement.appendChild(getLanguage(doc, rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4)));
+                    rootElement.appendChild(getLanguage(doc, rs.getString(1), rs.getString(2)));
                 }
                 connection.close();
 
@@ -63,13 +65,11 @@ public class ConnectionUtils {
             }
         }
 
-    private static Node getLanguage(Document doc, String name, String city, String fruit, String vegatable) {
+    private static Node getLanguage(Document doc, String name, String city) {
         Element people = doc.createElement("People");
 
         people.appendChild(getPeopleElement(doc, people, "Имя", name));
         people.appendChild(getPeopleElement(doc, people, "Город", city));
-        people.appendChild(getPeopleElement(doc, people, "Фрукт", fruit));
-        people.appendChild(getPeopleElement(doc, people, "Овощ", vegatable));
 
         return people;
     }
