@@ -46,10 +46,8 @@ public class ConnectionUtils {
             ));
         }
 
-        System.out.println(ppl.toString()); //вывод коллекции ДО сортировки
-            Collections.sort(ppl, People.COMPARE_BY_AGE); //сортировка по возрасту
-            //Collections.sort(ppl,People.COMPARE_BY_NAME); //сортировка по имени
-            System.out.println(ppl.toString()); //вывод коллекции ПОСЛЕ сортировки
+        Collections.sort(ppl, People.COMPARE_BY_AGE);
+        //Collections.sort(ppl,People.COMPARE_BY_NAME); //сортировка по имени
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder;
