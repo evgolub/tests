@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.File;
+import java.util.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -27,12 +28,28 @@ public class ConnectionUtils {
         public static void main(String[] args)  throws ClassNotFoundException,
                 SQLException {
 
-            Connection connection = ConnectionUtils.getMyConnection();
-            Statement statement = connection.createStatement();
+        Connection connection = ConnectionUtils.getMyConnection();
+        Statement statement = connection.createStatement();
 
+        String sql = "SELECT * from table(test_pkg_3.GET_NAME('жен'))";
+        ResultSet rs = statement.executeQuery(sql);
 
-            String sql = "SELECT * from table(test_pkg_3.GET_NAME('СПб'))";
-            ResultSet rs = statement.executeQuery(sql);
+        ArrayList<People> ppl = new ArrayList<>();
+        while (rs.next()) {
+            ppl.add( new People(
+                    rs.getString(1),
+                    rs.getInt(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6)
+            ));
+        }
+
+        System.out.println(ppl.toString()); //вывод коллекции ДО сортировки
+            Collections.sort(ppl, People.COMPARE_BY_AGE); //сортировка по возрасту
+            //Collections.sort(ppl,People.COMPARE_BY_NAME); //сортировка по имени
+            System.out.println(ppl.toString()); //вывод коллекции ПОСЛЕ сортировки
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder;
@@ -45,10 +62,16 @@ public class ConnectionUtils {
 
                 doc.appendChild(rootElement);
 
-                while (rs.next()) {
-                    rootElement.appendChild(getLanguage(doc, rs.getString(1), rs.getString(2)));
+                for(int i =0 ; i<ppl.toArray().length; i++)
+                {
+                            rootElement.appendChild(getPeople(doc,
+                            ppl.get(i).getName(),
+                            ppl.get(i).getAge(),
+                            ppl.get(i).getSex(),
+                            ppl.get(i).getCity(),
+                            ppl.get(i).getSocial(),
+                            ppl.get(i).getCar()));
                 }
-                connection.close();
 
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
@@ -63,14 +86,18 @@ public class ConnectionUtils {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
 
-    private static Node getLanguage(Document doc, String name, String city) {
+    private static Node getPeople(Document doc, String Name, Integer Age, String Sex, String City, String SocialStatus, String Car) {
         Element people = doc.createElement("People");
 
-        people.appendChild(getPeopleElement(doc, people, "Имя", name));
-        people.appendChild(getPeopleElement(doc, people, "Город", city));
-
+        people.appendChild(getPeopleElement(doc, people, "Имя", Name));
+       people.appendChild(getPeopleElement(doc, people, "Возраст", Age.toString()));
+        people.appendChild(getPeopleElement(doc, people, "Пол", Sex));
+        people.appendChild(getPeopleElement(doc, people, "Город", City));
+        people.appendChild(getPeopleElement(doc, people, "Статус", SocialStatus));
+        people.appendChild(getPeopleElement(doc, people, "Машина", Car));
         return people;
     }
 
